@@ -1,0 +1,6 @@
+hadoop_head_node,orange-1.sm.guavus.com
+standby_head_node,orange-2.sm.guavus.com
+hadoop_storage_dirs,/data/hadoop
+bigtop_yumrepo_uri,file:///root/bigtop/output
+components,hadoop,yarn
+hadoop_ha,auto
