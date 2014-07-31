@@ -77,6 +77,7 @@ class hadoop {
   }
 
   class common-hdfs inherits common {
+    
     if ($auth == "kerberos" and $ha != "disabled") {
       fail("High-availability secure clusters are not currently supported")
     }
@@ -89,7 +90,9 @@ class hadoop {
       ensure => latest,
       require => [Package["jdk"], Package["hadoop"]],
     }
- 
+
+    notice($hadoop_namenode_host)
+
     file {
       "/etc/hadoop/conf/core-site.xml":
         content => template('hadoop/core-site.xml'),
@@ -136,6 +139,7 @@ class hadoop {
       $shared_edits_dir = extlookup("hadoop_ha_shared_edits_dir", "/hdfs_shared")
     }
 
+    notice($hadoop_namenode_host)
     include common-hdfs
 
     package { "hadoop-hdfs-datanode":

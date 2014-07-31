@@ -41,6 +41,8 @@ class hadoop_cluster_node {
     default    => "hdfs://${hadoop_ha_nameservice_id}:8020",
   }
 
+  notice($hadoop_namenode_host)
+
   $hadoop_rm_host        = $hadoop_head_node
   $hadoop_rt_port        = extlookup("hadoop_rt_port", "8025")
   $hadoop_rm_port        = extlookup("hadoop_rm_port", "8032")
@@ -72,7 +74,7 @@ class hadoop_cluster_node {
   $spark_master_port                 = extlookup("spark_master_port", "7077")
   $spark_master_ui_port              = extlookup("spark_master_ui_port", "18080")
 
-  $components                        = extlookup("components",    split($components, ","))
+  #$components                        = extlookup("components",    split($components, ","))
 
   $hadoop_ha_zookeeper_quorum        = "${hadoop_head_node}:${hadoop_zookeeper_port}"
   $solrcloud_zk                      = "${hadoop_head_node}:${hadoop_zookeeper_port}"
@@ -111,6 +113,7 @@ class hadoop_cluster_node {
   $yarn_data_dirs     = extlookup("hadoop_yarn_data_dirs",     append_each("/yarn",     $roots))
 
   $hadoop_security_authentication = extlookup("hadoop_security", "simple")
+
   if ($hadoop_security_authentication == "kerberos") {
     $kerberos_domain     = extlookup("hadoop_kerberos_domain")
     $kerberos_realm      = extlookup("hadoop_kerberos_realm")
