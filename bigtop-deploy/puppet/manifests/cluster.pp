@@ -13,8 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-class hadoop_cluster_node {
-  require bigtop_util  
+  require bigtop_util
+
+  $puppet_confdir = get_setting("confdir")
+  $extlookup_datadir="$puppet_confdir/config"
+  $extlookup_precedence = ["site", "default"]
 
   $hadoop_head_node        = extlookup("hadoop_head_node") 
   $standby_head_node = extlookup("standby_head_node", "")
@@ -124,6 +127,9 @@ class hadoop_cluster_node {
     hadoop-flume::agent { "flume agent":
     }
   }
+
+class hadoop_cluster_node {
+  require bigtop_util
 }
 
 

@@ -14,10 +14,10 @@
 # limitations under the License.
 
 require bigtop_util
-$puppet_confdir = get_setting("confdir")
+#$puppet_confdir = get_setting("confdir")
 $default_yumrepo = "http://bigtop01.cloudera.org:8080/view/Hadoop%200.23/job/Bigtop-23-matrix/label=centos5/lastSuccessfulBuild/artifact/output/"
-$extlookup_datadir="$puppet_confdir/config"
-$extlookup_precedence = ["site", "default"]
+#$extlookup_datadir="$puppet_confdir/config"
+#$extlookup_precedence = ["site", "default"]
 $jdk_package_name = extlookup("jdk_package_name", "jdk")
 
 stage {"pre": before => Stage["main"]}
