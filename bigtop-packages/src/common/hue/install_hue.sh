@@ -178,6 +178,8 @@ done
 
 # Remove bogus files
 rm -fv `find $PREFIX -iname "build_log.txt"`
+rm -fv `find $PREFIX -iname "migrate.log"`
+rm -fv `find $PREFIX -iname "sync.log"`
 
 install -d ${PREFIX}/${DOC_DIR}
 cp -r ${BUILD_DIR}/build/docs/* ${PREFIX}/${DOC_DIR}/

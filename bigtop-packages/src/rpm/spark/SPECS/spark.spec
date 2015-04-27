@@ -160,6 +160,7 @@ done
 %attr(0755,spark,spark) %{var_log_spark}
 %attr(0755,root,root) %{bin_spark}
 %{bin}/spark-shell
+%{bin}/spark-submit
 %{bin}/spark-executor
 
 %files -n spark-python

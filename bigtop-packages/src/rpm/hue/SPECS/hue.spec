@@ -166,7 +166,7 @@ orig_init_file=$RPM_SOURCE_DIR/%{name}.init
 # TODO maybe dont need this line anymore:
 %__install -d -m 0755 $RPM_BUILD_ROOT/%{initd_dir}
 cp $orig_init_file $RPM_BUILD_ROOT/%{initd_dir}/hue
-
+rm $RPM_BUILD_ROOT/usr/lib/hue/apps/logs/*
 #### PLUGINS ######
 
 %package -n %{name}-common
